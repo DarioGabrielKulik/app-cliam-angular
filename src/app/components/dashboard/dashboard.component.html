@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 mt-4">
+      <img [src]="imgUrl" alt="" width="300px" height="300px" />
+    </div>
+    <div class="col-lg-6 mt-5">
+      <input
+        type="text"
+        [(ngModel)]="ciudad"
+        class="form-control form-control-lg"
+        placeholder="Indique Ciudad"
+      />
+      <button
+        class="btn btn-primary btn-block mt-2 p-2"
+        style="width: 100%"
+        [disabled]="ciudad == ''"
+        (click)="obtenerClima()"
+      >
+        OBTENER CLIMA
+      </button>
+      <div class="text-center" *ngIf="loading">
+        <div class="spinner-border text-success mt-4" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+      </div>   
+      <div class="card mt-4" *ngIf="jquery">
+        <div class="card-body">
+          <p><b>Temperatura: </b>{{temperatura}}</p>
+          <p><b>Humedad: </b>{{humedad}}</p>
+          <p><b>Clima: </b>{{clouds}}</p>
+        </div>
+      </div>
+      <div class="text-center" *ngIf="errores">
+        <span class="badge text-bg-danger fs-2 mt-4" style="width: 100%;">Error al Ingresar una ciudad</span>
+      </div>
+    </div>
+  </div>
+</div>
